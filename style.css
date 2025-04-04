@@ -1,0 +1,649 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Import the thunder-like font (Creepster from Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+/* Body Styling */
+body {
+    font-family: 'Creepster', cursive; /* Apply the thunder-like font to the entire site */
+    line-height: 1.6;
+    background: linear-gradient(135deg, #1e1e2f, #2b2b3d); /* Dark coding-themed background */
+    color: #e0e0e0; /* Light text for contrast */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    min-height: 100vh;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Header Styling */
+header {
+    position: relative;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    height: 400px; /* Adjust height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: thunder 3s infinite; /* Apply thunder animation */
+}
+
+/* Bouncing Effect for h1 */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Moving Text Animation for h1 */
+@keyframes moveText {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Flickering Effect for h1 */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+    }
+    20%, 22%, 24%, 55% {
+        opacity: 0;
+    }
+}
+
+/* Thunder Animation for Header */
+@keyframes thunder {
+    0%, 100% {
+        background: rgba(0, 0, 0, 0.8);
+    }
+    50% {
+        background: rgba(255, 255, 255, 0.9); /* Flash of light */
+    }
+}
+
+/* Lightning Effect for h1 */
+@keyframes lightning {
+    0%, 80%, 100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff; /* Bright flash */
+    }
+}
+
+@font-face {
+    font-family: 'ElectricLightning';
+    src: url('fonts/ElectricLightning.ttf') format('truetype');
+}
+
+/* Updated Flickering Bulb Animation for h1 */
+@keyframes flickeringBulb {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00bcd4, 0 0 80px #ff5555;
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        text-shadow: 0 0 2px #00ff00, 0 0 4px #00ff00, 0 0 8px #00bcd4;
+        opacity: 0.8;
+    }
+    19%, 23%, 54% {
+        text-shadow: none;
+        opacity: 0.5;
+    }
+}
+
+/* Apply the Flickering Bulb Animation to h1 */
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #00ff00; /* Coding green */
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00bcd4, 0 0 80px #ff5555; /* Blending colors */
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    animation: flickeringBulb 2.5s infinite; /* Apply the flickering bulb animation */
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ff5555; /* Coding red */
+}
+
+/* Video Background for Header */
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Place the video behind the content */
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire header */
+}
+
+/* Rain Container */
+.rain-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Place the rain behind the content */
+    pointer-events: none; /* Prevent interaction with the rain */
+}
+
+/* Individual Raindrop */
+.raindrop {
+    position: absolute;
+    top: -10%; /* Start slightly above the header */
+    left: calc(100% * var(--x)); /* Random horizontal position */
+    width: 2px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Light color for the droplet */
+    border-radius: 50%;
+    animation: fall 2s linear infinite, sway 2s ease-in-out infinite;
+    filter: blur(1px); /* Add a slight blur for a 3D effect */
+}
+
+/* Falling Animation */
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(110%); /* Move past the header */
+    }
+}
+
+/* Sway Animation */
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px); /* Slight horizontal movement */
+    }
+}
+
+/* Add Randomness to Raindrops */
+.raindrop:nth-child(1) {
+    --x: 0.1;
+    animation-delay: 0s;
+}
+.raindrop:nth-child(2) {
+    --x: 0.3;
+    animation-delay: 0.5s;
+}
+.raindrop:nth-child(3) {
+    --x: 0.5;
+    animation-delay: 1s;
+}
+.raindrop:nth-child(4) {
+    --x: 0.7;
+    animation-delay: 1.5s;
+}
+.raindrop:nth-child(5) {
+    --x: 0.9;
+    animation-delay: 2s;
+}
+
+nav ul li {
+    margin: 0 20px; /* Add horizontal spacing between list items */
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    gap: 20px; /* Add spacing between items */
+}
+
+header nav ul li a {
+    color: #00bcd4; /* Coding blue */
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #00ff00; /* Coding green on hover */
+}
+
+/* Main Content Styling */
+main {
+    padding: 20px;
+    width: 90%; /* Center content with a max width */
+    max-width: 1200px;
+    text-align: center; /* Center-align text */
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #00bcd4; /* Coding blue */
+}
+
+section p, section ul {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+.project h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.project p {
+    margin-bottom: 10px;
+}
+
+.project a, .project button {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #00bcd4;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.project a:hover, .project button:hover {
+    background: #008c9e;
+}
+
+/* Skills Section */
+#skills ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+}
+
+#skills ul li {
+    background: #00bcd4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    text-align: left; /* Align skill names to the left */
+}
+
+#skills ul li span {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #00ff00; /* Coding green for skill names */
+}
+
+.progress-bar {
+    width: 100%;
+    background: #333; /* Dark background for progress bar */
+    border-radius: 5px;
+    overflow: hidden;
+    height: 10px;
+    margin-top: 5px;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff00, #00bcd4); /* Gradient for progress */
+    transition: width 0.5s ease;
+}
+
+/* Skills Section Styling */
+.skills-section {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1e1e2f, #2b2b3d); /* Dark coding-themed gradient */
+    color: #e0e0e0;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.skills-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00bcd4; /* Coding blue */
+    text-shadow: 0 0 10px #00bcd4, 0 0 20px #00ff00; /* Glowing effect */
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.skill {
+    flex: 1 1 calc(50% - 20px); /* Two skills per row */
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skill-info span {
+    font-size: 1.2rem;
+    color: #00ff00; /* Coding green */
+}
+
+.progress-bar {
+    width: 100%;
+    background: #333; /* Dark background for progress bar */
+    border-radius: 5px;
+    overflow: hidden;
+    height: 10px;
+    margin-top: 5px;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff00, #00bcd4); /* Gradient for progress */
+    transition: width 0.5s ease;
+}
+
+/* Contact Section */
+#contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+#contact ul li {
+    margin-bottom: 10px;
+}
+
+#contact ul li a {
+    color: #00bcd4;
+    text-decoration: none;
+}
+
+#contact ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #1e1e2f;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+footer .social-icons img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+footer .social-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Back-to-Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+#back-to-top:hover {
+    background: #008c9e;
+}
+
+/* Show Back-to-Top Button on Scroll */
+body.scrolled #back-to-top {
+    display: flex;
+}
+
+/* Bouncing Barcode */
+#barcode {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    background: url('barcode.png') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    animation: bounce 2s infinite; /* Bouncing animation */
+    z-index: 1000;
+}
+
+/* Under Construction Styling */
+.under-construction {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease-in-out; /* Fading effect */
+}
+
+.under-construction img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+    animation: pulse 2s infinite; /* Pulsing effect for the GIF */
+}
+
+.under-construction p {
+    font-size: 1.2rem;
+    color: #ff5555; /* Coding red */
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 85, 85, 0.8);
+}
+
+/* Fading Effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pulsing Effect for GIF */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #skills ul {
+        flex-direction: column;
+    }
+
+    /* Adjust header text size */
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    /* Adjust skills section layout */
+    #skills ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Adjust section headings */
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Adjust project buttons */
+    .project a, .project button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    #skills ul li span {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    section p, section ul {
+        font-size: 0.9rem;
+    }
+
+    #skills ul li {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    section p, section ul {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
